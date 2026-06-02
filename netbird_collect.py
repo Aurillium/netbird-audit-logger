@@ -29,7 +29,8 @@ def update_latest_log(last_log: int) -> None:
         json.dump(CONFIG, f)
 
 def json_log(data: dict) -> None:
-    print(json.dumps(data))
+    sys.stdout.write(json.dumps(data) + "\n")
+    sys.stdout.flush()
 
 def main() -> None:
     global CONFIG
