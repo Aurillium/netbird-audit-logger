@@ -48,6 +48,7 @@ def main() -> None:
             if r.status_code != 200:
                 raise ValueError(f"Unexpected status code querying logs: {r.status_code}")
             events: list[dict] = r.json()
+            events.sort(key=lambda x: int(x["id"]))
             max_evt: int = -1
             last_log: int = CONFIG["last_log"]
             for event in events:
